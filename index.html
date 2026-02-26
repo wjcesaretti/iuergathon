@@ -4,10 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IU Rowing Club — Championship Drive | Spring 2026</title>
-<meta name="description" content="Support IU Rowing Club's spring 2026 racing season. Donate to our Championship Drive fundraiser.">
+<meta name="description" content="It's a championship year in Bloomington. Support IU Rowing Club's spring 2026 racing season.">
 <meta property="og:title" content="IU Rowing Club — Championship Drive">
-<meta property="og:description" content="Support IU Rowing Club's spring racing season. Every dollar moves the ball downfield.">
+<meta property="og:description" content="It's a championship year in Bloomington. 35+ athletes building competitive rowing at Indiana University. Every dollar moves the ball downfield.">
 <meta property="og:type" content="website">
+<!-- TODO: Add og:image once you have a team photo hosted
+<meta property="og:image" content="https://iuergathon.com/images/og-image.jpg"> -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IU Rowing Club — Championship Drive">
+<meta name="twitter:description" content="It's a championship year in Bloomington. Support IU Rowing's spring racing season.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -30,7 +35,6 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -42,469 +46,327 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* ===== NAV ===== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(14,14,14,0.92);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--dark-border);
+    height: 56px; display: flex; align-items: center;
+  }
+  .nav-inner {
+    max-width: 960px; width: 100%; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-brand img { height: 28px; width: auto; }
+  .nav-brand span {
+    font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.8rem;
+    text-transform: uppercase; letter-spacing: 2px; color: var(--cream);
+  }
+  .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+  .nav-links a {
+    font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cream); }
+  .nav-donate {
+    padding: 7px 20px; background: var(--crimson); color: var(--cream) !important;
+    border-radius: 3px; font-weight: 600 !important; letter-spacing: 2.5px !important;
+    transition: background 0.2s;
+  }
+  .nav-donate:hover { background: var(--crimson-dark); }
+  .nav-toggle { display: none; cursor: pointer; padding: 8px; }
+  .nav-toggle span { display: block; width: 20px; height: 2px; background: var(--cream); margin: 4px 0; transition: all 0.3s; }
+
   /* ===== UTILITY ===== */
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
+  .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
   section { padding: 72px 0; }
-
-  section + section {
-    border-top: 1px solid var(--dark-border);
-  }
-
+  section + section { border-top: 1px solid var(--dark-border); }
   h2 {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--cream);
-    margin-bottom: 24px;
+    font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.8rem;
+    text-transform: uppercase; letter-spacing: 2px; color: var(--cream); margin-bottom: 24px;
   }
-
   h2 .accent { color: var(--crimson); }
-
   p + p { margin-top: 16px; }
-
   strong { color: var(--cream-light); }
-
   a { color: var(--crimson-light); }
 
   .btn {
-    display: inline-block;
-    padding: 16px 48px;
-    background: var(--crimson);
-    color: var(--cream);
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-decoration: none;
-    border-radius: 4px;
-    border: 2px solid var(--crimson);
-    transition: all 0.25s;
+    display: inline-block; padding: 16px 48px; background: var(--crimson); color: var(--cream);
+    font-family: 'Oswald', sans-serif; font-size: 1.15rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 3px; text-decoration: none;
+    border-radius: 4px; border: 2px solid var(--crimson); transition: all 0.25s;
   }
+  .btn:hover { background: transparent; color: var(--cream); border-color: var(--cream); }
+  .btn-wrap { margin-top: 32px; text-align: center; }
 
-  .btn:hover {
-    background: transparent;
-    color: var(--cream);
-    border-color: var(--cream);
-  }
-
-  .btn-wrap {
-    margin-top: 32px;
-    text-align: center;
+  .section-label {
+    font-family: 'Oswald', sans-serif; font-size: 0.65rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 4px; color: var(--crimson); margin-bottom: 12px;
   }
 
   /* ===== HERO ===== */
   .hero {
-    padding: 100px 0 80px;
-    text-align: center;
-    background: linear-gradient(180deg, #1a0000 0%, var(--dark) 100%);
-    border-bottom: 1px solid var(--dark-border);
+    position: relative; padding: 160px 0 100px; text-align: center;
+    overflow: hidden; margin-top: 56px;
   }
-
-  .hero-badge {
-    display: inline-block;
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--gold);
-    border: 1px solid rgba(212,168,67,0.3);
-    padding: 6px 16px;
-    border-radius: 3px;
-    margin-bottom: 28px;
+  .hero-bg {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    /* TODO: Replace with your team photo in front of Memorial Stadium:
+       background-image: url('images/team-stadium.jpg'); */
+       background-image: url('images/team-modified copy.jpeg');    background-size: cover; background-position: center; z-index: 0;
   }
-
+  .hero-bg::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(14,14,14,0.7) 0%, rgba(14,14,14,0.5) 40%, rgba(14,14,14,0.85) 100%);
+    z-index: 1;
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-logo { width: 120px; height: auto; margin-bottom: 12px; opacity: 0.9; display: block; margin-left: auto; margin-right: auto; }  .hero-badge {
+    display: inline-block; font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 3px; color: var(--gold);
+    border: 1px solid rgba(212,168,67,0.3); padding: 6px 16px; border-radius: 3px; margin-bottom: 28px;
+  }
   .hero h1 {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 3.8rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--cream);
-    line-height: 1.05;
+    font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 3.8rem;
+    text-transform: uppercase; letter-spacing: 3px; color: var(--cream); line-height: 1.05;
   }
-
   .hero h1 .line2 {
-    display: block;
-    color: var(--crimson);
-    font-size: 2.2rem;
-    letter-spacing: 6px;
-    margin-top: 4px;
+    display: block; color: var(--crimson); font-size: 2.2rem; letter-spacing: 6px; margin-top: 4px;
   }
-
   .hero .sub {
-    font-size: 1rem;
-    color: var(--text-dim);
-    margin-top: 16px;
-    letter-spacing: 1px;
+    font-size: 1.05rem; color: var(--text); margin-top: 20px;
+    max-width: 580px; margin-left: auto; margin-right: auto; line-height: 1.6;
   }
-
+  .hero .sub em { color: var(--cream); font-style: normal; font-weight: 600; }
   .hero .btn { margin-top: 32px; }
 
-  /* ===== THERMOMETER SECTION ===== */
-  .thermo-section {
-    padding: 64px 0;
-    background: var(--dark);
+  /* ===== STATS BAR ===== */
+  .stats-bar {
+    background: var(--dark-card);
+    border-top: 1px solid var(--dark-border);
+    border-bottom: 1px solid var(--dark-border);
+  }
+  .stats-inner {
+    max-width: 700px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .stat { text-align: center; padding: 28px 12px; border-right: 1px solid var(--dark-border); }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700;
+    color: var(--cream); line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Oswald', sans-serif; font-size: 0.55rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 2.5px; color: var(--text-dim); margin-top: 6px;
   }
 
-  .thermo-wrap {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  .big-number {
-    text-align: center;
-    margin-bottom: 28px;
-  }
-
-  .big-number .raised {
-    font-family: 'Oswald', sans-serif;
-    font-size: 3.4rem;
-    font-weight: 700;
-    color: var(--cream);
-    line-height: 1;
-  }
-
-  .big-number .of-goal {
-    font-size: 0.95rem;
-    color: var(--text-dim);
-    margin-top: 6px;
-  }
-
+  /* ===== THERMOMETER ===== */
+  .thermo-section { padding: 64px 0; background: var(--dark); }
+  .thermo-wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  .big-number { text-align: center; margin-bottom: 28px; }
+  .big-number .raised { font-family: 'Oswald', sans-serif; font-size: 3.4rem; font-weight: 700; color: var(--cream); line-height: 1; }
+  .big-number .of-goal { font-size: 0.95rem; color: var(--text-dim); margin-top: 6px; }
   .big-number .of-goal strong { color: var(--cream-light); }
+  .big-number .pct-badge { display: inline-block; background: var(--crimson); color: var(--cream); font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 600; padding: 2px 10px; border-radius: 3px; margin-left: 6px; letter-spacing: 1px; }
 
-  .big-number .pct-badge {
-    display: inline-block;
-    background: var(--crimson);
-    color: var(--cream);
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 2px 10px;
-    border-radius: 3px;
-    margin-left: 6px;
-    letter-spacing: 1px;
-  }
-
-  /* Football field */
   .field-outer { position: relative; width: 100%; }
-
-  .field {
-    position: relative;
-    width: 100%;
-    height: 105px;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 2.5px solid rgba(237,235,223,0.6);
-    background: var(--field-green);
-  }
-
-  .f-stripes {
-    position: absolute;
-    left: 9%; right: 9%; top: 0; bottom: 0;
-    display: flex;
-  }
-
+  .field { position: relative; width: 100%; height: 105px; border-radius: 6px; overflow: hidden; border: 2.5px solid rgba(237,235,223,0.6); background: var(--field-green); }
+  .f-stripes { position: absolute; left: 9%; right: 9%; top: 0; bottom: 0; display: flex; }
   .f-stripes div { flex: 1; }
   .f-stripes div:nth-child(even) { background: rgba(0,0,0,0.07); }
-
-  .f-hashes {
-    position: absolute;
-    left: 9%; right: 9%; top: 0; bottom: 0;
-    z-index: 2;
-  }
-
-  .f-hash-line {
-    position: absolute; top: 0; width: 1.5px; height: 100%;
-    background: rgba(255,255,255,0.18);
-  }
-
-  .f-yard {
-    position: absolute;
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.55rem;
-    font-weight: 500;
-    color: rgba(255,255,255,0.3);
-    letter-spacing: 1px;
-    z-index: 3;
-    transform: translateX(-50%);
-    top: 28%;
-  }
-
-  .f-ez {
-    position: absolute; top: 0; bottom: 0; width: 9%;
-    display: flex; align-items: center; justify-content: center;
-    z-index: 4;
-  }
-
-  .f-ez-l {
-    left: 0;
-    background: linear-gradient(135deg, #222 0%, #3a3a3a 100%);
-    border-right: 2.5px solid rgba(237,235,223,0.4);
-  }
-
-  .f-ez-r {
-    right: 0;
-    background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson) 100%);
-    border-left: 2.5px solid var(--gold);
-    box-shadow: inset 0 0 20px rgba(212,168,67,0.1);
-  }
-
-  .f-ez-txt {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-  }
-
+  .f-hashes { position: absolute; left: 9%; right: 9%; top: 0; bottom: 0; z-index: 2; }
+  .f-hash-line { position: absolute; top: 0; width: 1.5px; height: 100%; background: rgba(255,255,255,0.18); }
+  .f-yard { position: absolute; font-family: 'Oswald', sans-serif; font-size: 0.55rem; font-weight: 500; color: rgba(255,255,255,0.3); letter-spacing: 1px; z-index: 3; transform: translateX(-50%); top: 28%; }
+  .f-ez { position: absolute; top: 0; bottom: 0; width: 9%; display: flex; align-items: center; justify-content: center; z-index: 4; }
+  .f-ez-l { left: 0; background: linear-gradient(135deg, #222 0%, #3a3a3a 100%); border-right: 2.5px solid rgba(237,235,223,0.4); }
+  .f-ez-r { right: 0; background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson) 100%); border-left: 2.5px solid var(--gold); box-shadow: inset 0 0 20px rgba(212,168,67,0.1); }
+  .f-ez-txt { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 0.5rem; text-transform: uppercase; letter-spacing: 2px; writing-mode: vertical-rl; text-orientation: mixed; }
   .f-ez-l .f-ez-txt { color: rgba(255,255,255,0.3); }
   .f-ez-r .f-ez-txt { color: var(--gold); font-size: 0.55rem; letter-spacing: 2.5px; text-shadow: 0 0 6px rgba(212,168,67,0.2); }
-
-  .f-progress {
-    position: absolute;
-    left: 9%; right: 9%; top: 0; bottom: 0;
-    z-index: 5; overflow: hidden;
-  }
-
-  .f-bar {
-    position: absolute; top: 0; left: 0; bottom: 0;
-    width: 0%;
-    background: linear-gradient(90deg, rgba(107,0,0,0.5) 0%, rgba(153,0,0,0.4) 70%, rgba(200,0,0,0.45) 100%);
-    border-right: 2.5px solid var(--cream);
-    box-shadow: 0 0 16px rgba(153,0,0,0.3);
-    transition: width 1.8s cubic-bezier(0.22, 0.61, 0.36, 1);
-  }
-
-  .f-los {
-    position: absolute; top: 0; bottom: 0;
-    width: 2.5px; left: 0%;
-    transform: translateX(-50%);
-    background: var(--gold);
-    opacity: 0.55;
-    z-index: 6;
-    box-shadow: 0 0 6px rgba(212,168,67,0.4);
-    transition: left 1.8s cubic-bezier(0.22, 0.61, 0.36, 1);
-  }
-
-  .f-ball-area {
-    position: absolute;
-    left: 9%; right: 9%; top: 0; bottom: 0;
-    z-index: 10;
-  }
-
-  .f-ball {
-    position: absolute; top: 50%; left: 0%;
-    transform: translate(-50%, -50%);
-    transition: left 1.8s cubic-bezier(0.22, 0.61, 0.36, 1);
-    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6));
-  }
-
+  .f-progress { position: absolute; left: 9%; right: 9%; top: 0; bottom: 0; z-index: 5; overflow: hidden; }
+  .f-bar { position: absolute; top: 0; left: 0; bottom: 0; width: 0%; background: linear-gradient(90deg, rgba(107,0,0,0.5) 0%, rgba(153,0,0,0.4) 70%, rgba(200,0,0,0.45) 100%); border-right: 2.5px solid var(--cream); box-shadow: 0 0 16px rgba(153,0,0,0.3); transition: width 1.8s cubic-bezier(0.22, 0.61, 0.36, 1); }
+  .f-los { position: absolute; top: 0; bottom: 0; width: 2.5px; left: 0%; transform: translateX(-50%); background: var(--gold); opacity: 0.55; z-index: 6; box-shadow: 0 0 6px rgba(212,168,67,0.4); transition: left 1.8s cubic-bezier(0.22, 0.61, 0.36, 1); }
+  .f-ball-area { position: absolute; left: 9%; right: 9%; top: 0; bottom: 0; z-index: 10; }
+  .f-ball { position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%); transition: left 1.8s cubic-bezier(0.22, 0.61, 0.36, 1); filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6)); }
   .f-ball svg { width: 38px; height: 24px; }
-
-  /* Milestones */
-  .f-milestones {
-    position: relative;
-    width: 82%; margin: 8px auto 0; height: 55px;
-  }
-
-  .f-ms {
-    position: absolute; top: 0; transform: translateX(-50%);
-    text-align: center;
-    display: flex; flex-direction: column; align-items: center;
-  }
-
+  .f-milestones { position: relative; width: 82%; margin: 8px auto 0; height: 55px; }
+  .f-ms { position: absolute; top: 0; transform: translateX(-50%); text-align: center; display: flex; flex-direction: column; align-items: center; }
   .f-ms-tick { width: 1px; height: 11px; background: #333; transition: background 0.5s; }
   .f-ms-amt { font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600; color: #555; margin-top: 3px; transition: color 0.5s; }
   .f-ms-lbl { font-size: 0.55rem; color: #444; text-transform: uppercase; letter-spacing: 1px; margin-top: 1px; white-space: nowrap; transition: color 0.5s; }
-
   .f-ms.hit .f-ms-tick { background: var(--gold); }
   .f-ms.hit .f-ms-amt { color: var(--cream); }
   .f-ms.hit .f-ms-lbl { color: var(--gold); }
-
-  .f-ms-td {
-    position: absolute; top: 0; right: -11%; transform: translateX(50%);
-    text-align: center;
-    display: flex; flex-direction: column; align-items: center;
-  }
-
+  .f-ms-td { position: absolute; top: 0; right: -11%; transform: translateX(50%); text-align: center; display: flex; flex-direction: column; align-items: center; }
   .f-ms-td .f-ms-tick { background: var(--gold); }
   .f-ms-td .f-ms-amt { font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--gold); margin-top: 3px; }
   .f-ms-td .f-ms-lbl { font-size: 0.6rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-top: 1px; }
+  .thermo-tagline { text-align: center; margin-top: 24px; font-size: 0.85rem; color: var(--text-dim); font-style: italic; letter-spacing: 0.5px; }
 
-  .thermo-tagline {
-    text-align: center;
-    margin-top: 24px;
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    font-style: italic;
-    letter-spacing: 0.5px;
+  /* ===== PHOTO GALLERY ===== */
+  .gallery-grid {
+    display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 200px 200px;
+    gap: 12px; margin-top: 28px;
+  }
+  .gallery-item {
+    background: #1a1a1a; border: 1px solid var(--dark-border); border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;
+  }
+  .gallery-item.tall { grid-row: 1 / 3; }
+  .gallery-placeholder {
+    font-family: 'Oswald', sans-serif; font-size: 0.65rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 2px; color: #333; text-align: center; line-height: 1.6;
   }
 
-  /* ===== CONTENT SECTIONS ===== */
-  .section-label {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: var(--crimson);
-    margin-bottom: 12px;
-  }
-
-  /* Tiers */
-  .tiers-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 24px;
-  }
-
+  /* ===== TIERS ===== */
+  .tiers-stack { margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
   .tier {
-    background: var(--dark-card);
-    border: 1px solid var(--dark-border);
-    border-radius: 6px;
-    padding: 20px 22px;
+    background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 6px;
+    padding: 22px 28px; display: flex; align-items: flex-start; gap: 20px;
     transition: border-color 0.25s;
   }
-
   .tier:hover { border-color: rgba(153,0,0,0.4); }
-
-  .tier-amount {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--cream);
+  .tier-left { flex-shrink: 0; min-width: 80px; }
+  .tier-amount { font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--cream); line-height: 1; }
+  .tier-name { font-family: 'Oswald', sans-serif; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--crimson); margin-top: 4px; }
+  .tier-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.55; }
+  .tier-btn {
+    flex-shrink: 0; margin-left: auto; align-self: center;
+    padding: 8px 20px; background: transparent; border: 1.5px solid var(--dark-border);
+    color: var(--text-dim); font-family: 'Oswald', sans-serif; font-size: 0.65rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 2px; text-decoration: none;
+    border-radius: 3px; transition: all 0.2s; white-space: nowrap;
   }
-
-  .tier-name {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--crimson);
-    margin-top: 2px;
+  .tier-btn:hover { border-color: var(--crimson); color: var(--cream); background: var(--crimson); }
+  .tier.tier-td {
+    background: linear-gradient(135deg, rgba(107,0,0,0.18) 0%, var(--dark-card) 100%);
+    border-color: rgba(212,168,67,0.25);
   }
+  .tier.tier-td .tier-name { color: var(--gold); }
+  .tier.tier-td .tier-btn { border-color: var(--gold-dim); color: var(--gold); }
+  .tier.tier-td .tier-btn:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
 
-  .tier-desc {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    margin-top: 8px;
-    line-height: 1.5;
-  }
+  /* ===== ERGATHON ===== */
+  .erg-details { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 28px; }
+  .erg-detail { text-align: center; padding: 24px 16px; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 6px; }
+  .erg-detail-label { font-family: 'Oswald', sans-serif; font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--text-dim); margin-bottom: 6px; }
+  .erg-detail-value { font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--cream); }
 
-  .tier.full-width {
-    grid-column: 1 / -1;
-    text-align: center;
-    background: linear-gradient(135deg, rgba(107,0,0,0.15) 0%, var(--dark-card) 100%);
-    border-color: rgba(153,0,0,0.3);
-  }
-
-  /* Ergathon details */
-  .erg-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    margin-top: 28px;
-  }
-
-  .erg-detail {
-    text-align: center;
-    padding: 24px 16px;
-    background: var(--dark-card);
-    border: 1px solid var(--dark-border);
-    border-radius: 6px;
-  }
-
-  .erg-detail-label {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--text-dim);
-    margin-bottom: 6px;
-  }
-
-  .erg-detail-value {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--cream);
-  }
-
-  /* Footer */
-  footer {
-    padding: 48px 0;
-    text-align: center;
-    border-top: 1px solid var(--dark-border);
-  }
-
-  footer p {
-    font-size: 0.8rem;
-    color: #444;
-    margin-top: 8px;
-  }
-
+  /* ===== FOOTER ===== */
+  footer { padding: 56px 0 40px; text-align: center; border-top: 1px solid var(--dark-border); }
+  .footer-logos { display: flex; align-items: center; justify-content: center; gap: 32px; margin-bottom: 24px; }
+  .footer-logos img { height: 36px; width: auto; opacity: 0.5; }
+  footer p { font-size: 0.8rem; color: #444; margin-top: 8px; }
   footer a { color: var(--crimson); text-decoration: none; }
+  .footer-brand { font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: #555; }
+  .footer-tagline { font-size: 0.75rem; color: #333; font-style: italic; margin-top: 20px; letter-spacing: 0.5px; }
 
-  .footer-brand {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #555;
-  }
-
+  /* ===== SECTION BACKGROUNDS ===== */
+.section-bg {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.section-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(14, 14, 14, 0.82);
+  z-index: 0;
+}
+.section-bg > .container {
+  position: relative;
+  z-index: 1;
+}
   /* ===== RESPONSIVE ===== */
   @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column; position: absolute;
+      top: 56px; left: 0; right: 0; background: rgba(14,14,14,0.97);
+      border-bottom: 1px solid var(--dark-border); padding: 20px 24px; gap: 16px;
+    }
+    .nav-toggle { display: block; }
+    .hero { padding: 120px 0 70px; }
     .hero h1 { font-size: 2.4rem; }
     .hero h1 .line2 { font-size: 1.4rem; }
+    .hero-logo { width: 80px; }
     .big-number .raised { font-size: 2.6rem; }
     .field { height: 80px; }
     .f-yard { font-size: 0.4rem; }
     .f-ball svg { width: 30px; height: 19px; }
-    .tiers-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .stat { padding: 20px 12px; }
+    .stat:nth-child(2) { border-right: none; }
+    .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .gallery-item { min-height: 180px; }
+    .gallery-item.tall { grid-row: auto; }
+    .tier { flex-direction: column; gap: 12px; }
+    .tier-btn { margin-left: 0; }
     .erg-details { grid-template-columns: 1fr; }
     section { padding: 52px 0; }
     h2 { font-size: 1.4rem; }
+    .footer-logos img { height: 28px; }
+    .f-ms-td { right: -5%; }
   }
 </style>
 </head>
 <body>
 
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="images/iu_trident_web_reverse.png" alt="IU">
+      <span>Rowing Club</span>
+    </a>
+    <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#donate">Give</a></li>
+      <li><a href="https://www.zeffy.com/en-US/donation-form/spring-2026-iu-rowing-club-spring-racing-fundraiser-2" target="_blank" class="nav-donate">Donate</a></li>
+    </ul>
+  </div>
+</nav>
+
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="container">
+  <div class="hero-bg">
+    <!-- TODO: Add your team photo in front of Memorial Stadium here.
+         In the CSS above, replace the background line in .hero-bg with:
+         background-image: url('images/team-stadium.jpg');
+         The dark overlay keeps text readable over any photo. -->
+  </div>
+  <div class="hero-content container">
     <div class="hero-badge">Spring 2026 · Indiana University</div>
-    <h1>IU Rowing Club <span class="line2">Spring Racing Fundraiser</span></h1>
-    <p class="sub">Fund our spring racing season. Every dollar moves the ball downfield.</p>
-    <!-- CHANGE THIS LINK TO YOUR ZEFFY URL -->
+    <h1>IU Rowing Club <span class="line2">Championship Drive</span></h1>    <p class="sub">It's a championship year in Bloomington. IU Football just went <em>16-0</em> and brought home a national title! IU Rowing is carrying that energy onto the water this spring.</p>
     <a href="https://www.zeffy.com/en-US/donation-form/spring-2026-iu-rowing-club-spring-racing-fundraiser-2" target="_blank" class="btn">Donate Now</a>
   </div>
 </section>
+
+<!-- ===== STATS BAR ===== -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">35+</div><div class="stat-label">Athletes</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Days / Week</div></div>
+    <div class="stat"><div class="stat-num">1984</div><div class="stat-label">Founded</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Regattas</div></div>
+  </div>
+</div>
 
 <!-- ===== THERMOMETER ===== -->
 <section class="thermo-section">
   <div class="thermo-wrap">
     <div class="big-number">
       <div class="raised" id="raised">$0</div>
-      <div class="of-goal">of <strong>$7,500</strong> goal <span class="pct-badge" id="pct">0%</span></div>
+      <div class="of-goal">of <strong>$10,000</strong> goal <span class="pct-badge" id="pct">0%</span></div>
     </div>
-
     <div class="field-outer">
       <div class="field">
         <div class="f-stripes"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -530,110 +392,97 @@
           </div>
         </div>
       </div>
-
       <div class="f-milestones">
         <div class="f-ms" style="left:0%" id="m0"><div class="f-ms-tick"></div><div class="f-ms-amt">$0</div><div class="f-ms-lbl">Kickoff</div></div>
-        <div class="f-ms" style="left:25%" id="m1"><div class="f-ms-tick"></div><div class="f-ms-amt">$1,875</div><div class="f-ms-lbl">1st Down</div></div>
-        <div class="f-ms" style="left:50%" id="m2"><div class="f-ms-tick"></div><div class="f-ms-amt">$3,750</div><div class="f-ms-lbl">Midfield</div></div>
-        <div class="f-ms" style="left:80%" id="m3"><div class="f-ms-tick"></div><div class="f-ms-amt">$6,000</div><div class="f-ms-lbl">Red Zone</div></div>
-        <div class="f-ms-td"><div class="f-ms-tick"></div><div class="f-ms-amt">$7,500</div><div class="f-ms-lbl">Touchdown!</div></div>
+        <div class="f-ms" style="left:25%" id="m1"><div class="f-ms-tick"></div><div class="f-ms-amt">$2,500</div><div class="f-ms-lbl">1st Down</div></div>
+        <div class="f-ms" style="left:50%" id="m2"><div class="f-ms-tick"></div><div class="f-ms-amt">$5,000</div><div class="f-ms-lbl">Midfield</div></div>
+        <div class="f-ms" style="left:80%" id="m3"><div class="f-ms-tick"></div><div class="f-ms-amt">$8,000</div><div class="f-ms-lbl">Red Zone</div></div>
+        <div class="f-ms-td"><div class="f-ms-tick"></div><div class="f-ms-amt">$10,000</div><div class="f-ms-lbl">Touchdown!</div></div>
       </div>
     </div>
-
     <div class="thermo-tagline">Every dollar moves the ball downfield.</div>
   </div>
 </section>
 
 <!-- ===== WHO WE ARE ===== -->
-<section>
+<section id="about">
   <div class="container">
     <div class="section-label">Who We Are</div>
-    <h2>Built From <span class="accent">Scratch</span></h2>
-    <p>IU Rowing Club is a nationally competitive, student ran and funded organization that is committed to introducing the students of Indiana University to the sport of rowing,  as well as developing them as people on and off of the water. committed to bringing the sport of rowing to Bloomington and developing our athletes on and off the water.</p>
+    <h2>Built to <span class="accent">Compete</span></h2>
+    <p>IU Rowing Club is a nationally competitive, student-run and student-funded organization committed to introducing the students of Indiana University to the sport of rowing, as well as developing them as people on and off of the water.</p>
     <p>We as a club have been around since the 1980s, with our most recent reestablishment bringing rowing and its benefits back to campus in 2023. Back then, the club's reiteration began only with a handful of students with hardly any experience and even less rowing equipment. Since then, we as a club have grown rapidly thanks in large part to the support of our friends, family, and the community surrounding us. Today, we are comprised of over 35 highly dedicated athletes that train six days a week and travel across the country to represent Indiana University.</p>
+    <p>This spring, we're bringing that intensity to the water and building toward competing at the national level. <strong>The standard at IU has never been higher and we intend to meet it.</strong></p>
+
+    <!-- Photo gallery — replace placeholders with your real photos -->
+    <div class="gallery-grid">
+      <div class="gallery-item tall">
+        <img src="images/4-modified.jpeg" alt="IU Rowing at Memorial Stadium" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="gallery-item">
+        <img src="images/bh-modified.jpeg" alt="IU Rowing at Memorial Stadium" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="gallery-item">
+             <img src="images/quad-modified.jpg" alt="IU Rowing team" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ===== We Need Your SUPPORT ===== -->
-<section>
+<!-- ===== WHY SUPPORT ===== -->
+<section class="section-bg" style="background-image: url('images/mitch-modified.jpg');">
   <div class="container">
     <div class="section-label">Why We Need You</div>
-    <h2>Your Support <span class="accent">Makes Our Season</span></h2>
-    <p>As a club sport, the team receives minimal direct funding from the university and is almost
-      exclusively funded through athlete dues and fundraising. Rowing is traditionally an expensive sport and we are
-      trying to keep it accessible to the IU community so that our boat selection can be based on athlete merit rather than
-      purely financial means.</p>
-    <p><strong>This spring, we're raising $7,500 to fund our racing season.</strong> We appreciate any help you can provide.</p>
+    <h2>Your Support <span class="accent">Fuels the Drive</span></h2>
+    <p>As a club sport, the team receives minimal direct funding from the university and is almost exclusively funded through athlete dues and fundraising. Rowing is traditionally an expensive sport and we are trying to keep it accessible to the IU community so that our boat selection can be based on athlete merit rather than purely financial means.</p>
+    <p><strong>This spring, we're raising $10,000 to fuel our racing season.</strong> Every dollar goes directly to our athletes and our program.</p>
     <div class="btn-wrap">
       <a href="https://www.zeffy.com/en-US/donation-form/spring-2026-iu-rowing-club-spring-racing-fundraiser-2" target="_blank" class="btn">Donate Now</a>
     </div>
   </div>
 </section>
 
-<!-- ===== ERGATHON ===== -->
-<section>
-  <div class="container">
-    <div class="section-label">The Ergathon</div>
-    <h2>Spring Launch <span class="accent">Ergathon</span></h2>
-    <p>Before we hit Lake Lemon for spring racing, our team is coming together for one final push on the indoor rowing machines — rowing <strong>one million meters</strong> in a single session. Follow along live on Instagram <strong>@RowingClubIU</strong>.</p>
-    <div class="erg-details">
-      <div class="erg-detail">
-        <div class="erg-detail-label">When</div>
-        <!-- CHANGE THIS DATE -->
-        <div class="erg-detail-value">March 11</div>
-      </div>
-      <div class="erg-detail">
-        <div class="erg-detail-label">Time</div>
-        <div class="erg-detail-value">5 PM – 9 PM</div>
-      </div>
-      <div class="erg-detail">
-        <div class="erg-detail-label">Goal</div>
-        <div class="erg-detail-value">1,000,000 m</div>
-      </div>
-    </div>
-    <div class="btn-wrap">
-      <a href="https://www.zeffy.com/en-US/donation-form/spring-2026-iu-rowing-club-spring-racing-fundraiser-2" target="_blank" class="btn">Support the Effort</a>
-    </div>
-  </div>
-</section>
-
 <!-- ===== DONATION TIERS ===== -->
-<section>
+<section id="donate">
   <div class="container">
-    <div class="section-label">Make an Impact</div>
-    <h2>Where Your <span class="accent">Donation Goes</span></h2>
-    <p>Every dollar goes directly to our spring racing season.</p>
-    <div class="tiers-grid">
+    <div class="section-label">Join the Drive</div>
+    <h2>Every Yard <span class="accent">Counts</span></h2>
+    <p>Every tier moves the ball downfield. Pick your play.</p>
+    <div class="tiers-stack">
       <div class="tier">
-        <div class="tier-amount">$25</div>
-        <div class="tier-name">Supporter</div>
-        <div class="tier-desc">Helps cover the day-to-day costs of a competitive club rowing program — fuel, equipment upkeep, training supplies.</div>
-      </div>
-      <div class="tier">
-        <div class="tier-amount">$50</div>
-        <div class="tier-name">Contributor</div>
-        <div class="tier-desc">Keeps our training equipment in working order — erg maintenance and gear that gets used six days a week.</div>
+        <div class="tier-left"><div class="tier-amount">$25</div><div class="tier-name">First Down</div></div>
+        <div class="tier-desc">Gets the drive started. $25 covers gas for our safety launch, the motorboat that follows every practice to keep our athletes safe on the water.</div>
+        <a href="https://www.zeffy.com/en-US/donation-form/spring-2026-iu-rowing-club-spring-racing-fundraiser-2" target="_blank" class="tier-btn">Give $25</a>
       </div>
       <div class="tier">
-        <div class="tier-amount">$100</div>
-        <div class="tier-name">Racer</div>
-        <div class="tier-desc">Gets us closer to the starting line — helping cover regatta entry fees, travel, and the cost of competing.</div>
+        <div class="tier-left"><div class="tier-amount">$50</div><div class="tier-name">Moving the Chains</div></div>
+        <div class="tier-desc">Keeps our momentum going. $50 covers replacement parts and maintenance for our indoor rowing machines our athletes use to train during winter.</div>
+        <a href="https://www.zeffy.com/en-US/donation-form/spring-2026-iu-rowing-club-spring-racing-fundraiser-2" target="_blank" class="tier-btn">Give $50</a>
       </div>
       <div class="tier">
-        <div class="tier-amount">$250</div>
-        <div class="tier-name">Competitor</div>
-        <div class="tier-desc">Makes a meaningful dent in our equipment and travel budget, and helps keep dues affordable for every member.</div>
+        <div class="tier-left"><div class="tier-amount">$100</div><div class="tier-name">Crossing Midfield</div></div>
+        <div class="tier-desc">Now we're in scoring position. $100 covers the entry fee to put one of our boats on the starting line at a regatta.</div>
+        <a href="https://www.zeffy.com/en-US/donation-form/spring-2026-iu-rowing-club-spring-racing-fundraiser-2" target="_blank" class="tier-btn">Give $100</a>
       </div>
       <div class="tier">
-        <div class="tier-amount">$500</div>
-        <div class="tier-name">Champion</div>
-        <div class="tier-desc">Directly supports our biggest needs — racing shells, oars, and the equipment that keeps us competitive.</div>
+        <div class="tier-left"><div class="tier-amount">$250</div><div class="tier-name">Red Zone</div></div>
+        <div class="tier-desc">A big play when it matters most. $250 goes directly toward a new set of oars.</div>
+        <a href="https://www.zeffy.com/en-US/donation-form/spring-2026-iu-rowing-club-spring-racing-fundraiser-2" target="_blank" class="tier-btn">Give $250</a>
       </div>
-      <div class="tier full-width">
-        <div class="tier-amount">$1,000+</div>
-        <div class="tier-name">Founding Supporter</div>
-        <div class="tier-desc">You're building this program with us. Founding-level supporters are helping lay the foundation for competitive rowing at IU for years to come.</div>
+      <div class="tier">
+        <div class="tier-left"><div class="tier-amount">$500</div><div class="tier-name">Inside the Ten</div></div>
+        <div class="tier-desc">
+
+We can see the endzone. $500 offsets dues for multiple athletes, keeping rowing accessible so every seat in the boat is earned.</div>
+        <a href="https://www.zeffy.com/en-US/donation-form/spring-2026-iu-rowing-club-spring-racing-fundraiser-2" target="_blank" class="tier-btn">Give $500</a>
       </div>
+      <div class="tier tier-td">
+        <div class="tier-left"><div class="tier-amount">$1,000+</div><div class="tier-name">Touchdown</div></div>
+        <div class="tier-desc">You just scored. A founding-level gift that goes directly toward our racing shell fund. Every dollar brings us closer to equipment that matches our athletes' ability.</div>
+        <a href="https://www.zeffy.com/en-US/donation-form/spring-2026-iu-rowing-club-spring-racing-fundraiser-2" target="_blank" class="tier-btn">Give $1,000+</a>
+      </div>
+      <p style="text-align: center; font-size: 0.75rem; color: #444; margin-top: 24px; line-height: 1.6;">
+        IU Rowing Club is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the extent allowed by law.<br>
+      </p>
     </div>
     <div class="btn-wrap">
       <a href="https://www.zeffy.com/en-US/donation-form/spring-2026-iu-rowing-club-spring-racing-fundraiser-2" target="_blank" class="btn">Donate Any Amount</a>
@@ -646,27 +495,40 @@
   <div class="container">
     <div class="section-label">Mark Your Calendar</div>
     <h2>IU Day — <span class="accent">April 22</span></h2>
-    <p>IU's annual day of giving. One more chance to support IU Rowing as we head into the heart of our spring season. Follow <strong>@RowingClubIU</strong> on Instagram for our IU Day push.</p>
+    <p>IU's annual day of giving. One more chance to support IU Rowing as we head into the heart of our spring season. Follow <strong><a href="https://instagram.com/RowingClubIU" target="_blank">@RowingClubIU</a></strong> on Instagram for our IU Day push.</p>
   </div>
 </section>
 
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="container">
+    <div class="footer-logos">
+      <img src="images/IU_H_RevText_WEB.png" alt="Indiana University">
+    </div>
     <div class="footer-brand">IU Rowing Club</div>
     <p>Indiana University · Bloomington, IN</p>
     <p><a href="https://instagram.com/RowingClubIU" target="_blank">@RowingClubIU</a></p>
     <p style="margin-top:16px;">IU Rowing Club is a Self-Governed Student Organization at Indiana University.</p>
+    <p class="footer-tagline">Indiana builds champions. Fund the next one.</p>
   </div>
 </footer>
 
 <script>
   // =============================================
-  //  TO UPDATE: Change this number when donations
-  //  come in. Save the file, push to GitHub. Done.
+  //  TO UPDATE: Change AMOUNT_RAISED to your current
+  //  total. Save, push to GitHub. Done.
   // =============================================
-  const AMOUNT_RAISED = 0;
-  const GOAL = 7500;
+  const GOAL = 10000;
+
+// Fetch live total from Google Sheets
+fetch('  https://docs.google.com/spreadsheets/d/e/2PACX-1vRLQGbL-FNEPhXhBdM6HmV6DBeB8xPQ30NSDasqWr9D7X6io8saVYPWpg-vzn6GC1wMW1xjgbbDmybj/pub?gid=0&single=true&output=csv')
+  .then(r => r.text())
+  .then(csv => {
+    const amt = parseInt(csv.split('\n')[1]) || 0;
+    update(amt);
+  })
+  .catch(() => update(0));
+
   // =============================================
 
   // Build hash marks
@@ -685,7 +547,7 @@
     h.appendChild(num);
   }
 
-  // Animate
+  // Animate thermometer
   function update(amt) {
     const p = Math.min(amt / GOAL * 100, 100);
     document.getElementById('bar').style.width = p + '%';
@@ -693,7 +555,7 @@
     document.getElementById('ball').style.left = p + '%';
     document.getElementById('raised').textContent = '$' + amt.toLocaleString();
     document.getElementById('pct').textContent = Math.round(p) + '%';
-    [[0,'m0'],[1875,'m1'],[3750,'m2'],[6000,'m3']].forEach(([v,id]) => {
+    [[0,'m0'],[2500,'m1'],[5000,'m2'],[8000,'m3']].forEach(([v,id]) => {
       document.getElementById(id).classList.toggle('hit', amt >= v);
     });
   }
