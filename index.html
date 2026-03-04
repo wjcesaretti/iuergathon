@@ -48,36 +48,35 @@
   /* ===== NAV ===== */
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(28,28,28,0.97);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--dark-border);
-    height: 56px; display: flex; align-items: center;
+    background: #1c1c1c;
+    height: 64px; display: flex; align-items: center;
   }
   .nav-inner {
-    max-width: 960px; width: 100%; margin: 0 auto; padding: 0 24px;
+    max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 24px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-brand img { height: 28px; width: auto; }
+  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-brand img { height: 26px; width: auto; }
   .nav-brand span {
-    font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.8rem;
-    text-transform: uppercase; letter-spacing: 2px; color: #F9F9F9;
+    font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 1rem;
+    color: #ffffff; letter-spacing: 0; text-transform: none;
   }
-  .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+  .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
   .nav-links a {
-    font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 500;
-    text-transform: uppercase; letter-spacing: 2px; color: #F9F9F9;
-    text-decoration: none; transition: color 0.2s; opacity: 0.75;
+    font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem; font-weight: 500;
+    color: #ffffff; text-decoration: none; padding: 6px 14px; border-radius: 4px;
+    text-transform: none; letter-spacing: 0; opacity: 0.9;
+    transition: background 0.15s;
   }
-  .nav-links a:hover { opacity: 1; color: #F9F9F9; }
+  .nav-links a:hover { background: rgba(255,255,255,0.12); opacity: 1; }
   .nav-donate {
-    padding: 7px 20px; background: var(--crimson); color: var(--cream) !important;
-    border-radius: 3px; font-weight: 600 !important; letter-spacing: 2.5px !important;
-    transition: background 0.2s;
+    padding: 6px 16px !important; background: var(--crimson) !important; color: #fff !important;
+    border-radius: 4px !important; font-weight: 600 !important; opacity: 1 !important;
+    transition: background 0.2s !important;
   }
-  .nav-donate:hover { background: var(--crimson-dark); }
+  .nav-donate:hover { background: var(--crimson-dark) !important; }
   .nav-toggle { display: none; cursor: pointer; padding: 8px; }
-  .nav-toggle span { display: block; width: 20px; height: 2px; background: var(--cream); margin: 4px 0; transition: all 0.3s; }
+  .nav-toggle span { display: block; width: 20px; height: 2px; background: #ffffff; margin: 4px 0; transition: all 0.3s; }
 
   /* ===== UTILITY ===== */
   .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
@@ -109,7 +108,7 @@
   /* ===== HERO ===== */
   .hero {
     position: relative; padding: 160px 0 100px; text-align: center;
-    overflow: hidden; margin-top: 56px;
+    overflow: hidden; margin-top: 64px;
   }
   .hero-bg {
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -286,8 +285,8 @@
     .nav-links { display: none; }
     .nav-links.open {
       display: flex; flex-direction: column; position: absolute;
-      top: 56px; left: 0; right: 0; background: rgba(28,28,28,0.99);
-      border-bottom: 1px solid var(--dark-border); padding: 20px 24px; gap: 16px;
+      top: 64px; left: 0; right: 0; background: #1c1c1c;
+      border-top: 1px solid rgba(255,255,255,0.1); padding: 16px 24px; gap: 4px;
     }
     .nav-toggle { display: block; }
     .hero { padding: 120px 0 70px; }
@@ -332,7 +331,9 @@
     </div>
     <ul class="nav-links">
       <li><a href="https://rowingclubiu.org">Home</a></li>
+      <li><a href="https://rowingclubiu.org/info">Info</a></li>
       <li><a href="https://rowingclubiu.org/schedule">Schedule</a></li>
+      <li><a href="https://rowingclubiu.org/team">Team</a></li>
       <li><a href="https://rowingclubiu.org/join">Join</a></li>
       <li><a href="https://rowingclubiu.org/merch">Merch</a></li>
       <li><a href="https://rowingclubiu.org/support-us">Support Us</a></li>
