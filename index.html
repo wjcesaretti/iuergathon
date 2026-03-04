@@ -45,39 +45,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ===== NAV ===== */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: #1c1c1c;
-    height: 64px; display: flex; align-items: center;
-  }
-  .nav-inner {
-    max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 24px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .nav-brand img { height: 26px; width: auto; }
-  .nav-brand span {
-    font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 1rem;
-    color: #ffffff; letter-spacing: 0; text-transform: none;
-  }
-  .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
-  .nav-links a {
-    font-family: 'Source Sans 3', sans-serif; font-size: 1rem; font-weight: 600;
-    color: #ffffff; text-decoration: none; padding: 6px 14px; border-radius: 4px;
-    text-transform: none; letter-spacing: 0; opacity: 0.9;
-    transition: background 0.15s;
-  }
-  .nav-links a:hover { background: rgba(255,255,255,0.12); opacity: 1; }
-  .nav-donate {
-    padding: 6px 16px !important; background: var(--crimson) !important; color: #fff !important;
-    border-radius: 4px !important; font-weight: 600 !important; opacity: 1 !important;
-    transition: background 0.2s !important;
-  }
-  .nav-donate:hover { background: var(--crimson-dark) !important; }
-  .nav-toggle { display: none; cursor: pointer; padding: 8px; }
-  .nav-toggle span { display: block; width: 20px; height: 2px; background: #ffffff; margin: 4px 0; transition: all 0.3s; }
-
   /* ===== UTILITY ===== */
   .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
   section { padding: 72px 0; }
@@ -108,7 +75,7 @@
   /* ===== HERO ===== */
   .hero {
     position: relative; padding: 160px 0 100px; text-align: center;
-    overflow: hidden; margin-top: 64px;
+    overflow: hidden;
   }
   .hero-bg {
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -282,14 +249,7 @@
 }
   /* ===== RESPONSIVE ===== */
   @media (max-width: 640px) {
-    .nav-links { display: none; }
-    .nav-links.open {
-      display: flex; flex-direction: column; position: absolute;
-      top: 64px; left: 0; right: 0; background: #1c1c1c;
-      border-top: 1px solid rgba(255,255,255,0.1); padding: 16px 24px; gap: 4px;
-    }
-    .nav-toggle { display: block; }
-    .hero { padding: 120px 0 70px; }
+    .hero { padding: 100px 0 60px; }
     .hero h1 { font-size: 2.4rem; }
     .hero h1 .line2 { font-size: 1.4rem; }
     .hero-logo { width: 80px; }
@@ -319,28 +279,6 @@
 </head>
 <body>
 
-<!-- ===== NAVIGATION ===== -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="https://rowingclubiu.org" class="nav-brand">
-      <img src="images/iu_trident_web_reverse.png" alt="IU">
-      <span>Rowing Club at IU</span>
-    </a>
-    <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </div>
-    <ul class="nav-links">
-      <li><a href="https://rowingclubiu.org">Home</a></li>
-      <li><a href="https://rowingclubiu.org/info">Info</a></li>
-      <li><a href="https://rowingclubiu.org/schedule">Schedule</a></li>
-      <li><a href="https://rowingclubiu.org/team">Team</a></li>
-      <li><a href="https://rowingclubiu.org/join">Join</a></li>
-      <li><a href="https://rowingclubiu.org/merch">Merch</a></li>
-      <li><a href="https://rowingclubiu.org/support-us">Support Us</a></li>
-      <li><a href="https://www.zeffy.com/en-US/donation-form/spring-2026-iu-rowing-club-spring-racing-fundraiser-2" target="_blank" rel="noopener noreferrer" class="nav-donate">Donate</a></li>
-    </ul>
-  </div>
-</nav>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -556,6 +494,7 @@ fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRLQGbL-FNEPhXhBdM6HmV6DB
       document.getElementById(id).classList.toggle('hit', amt >= v);
     });
   }
+
 
 </script>
 
