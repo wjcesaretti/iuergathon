@@ -48,7 +48,7 @@
   /* ===== NAV ===== */
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(14,14,14,0.92);
+    background: rgba(28,28,28,0.97);
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--dark-border);
     height: 56px; display: flex; align-items: center;
@@ -61,15 +61,15 @@
   .nav-brand img { height: 28px; width: auto; }
   .nav-brand span {
     font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.8rem;
-    text-transform: uppercase; letter-spacing: 2px; color: var(--cream);
+    text-transform: uppercase; letter-spacing: 2px; color: #F9F9F9;
   }
   .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
   .nav-links a {
     font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 500;
-    text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim);
-    text-decoration: none; transition: color 0.2s;
+    text-transform: uppercase; letter-spacing: 2px; color: #F9F9F9;
+    text-decoration: none; transition: color 0.2s; opacity: 0.75;
   }
-  .nav-links a:hover { color: var(--cream); }
+  .nav-links a:hover { opacity: 1; color: #F9F9F9; }
   .nav-donate {
     padding: 7px 20px; background: var(--crimson); color: var(--cream) !important;
     border-radius: 3px; font-weight: 600 !important; letter-spacing: 2.5px !important;
@@ -286,7 +286,7 @@
     .nav-links { display: none; }
     .nav-links.open {
       display: flex; flex-direction: column; position: absolute;
-      top: 56px; left: 0; right: 0; background: rgba(14,14,14,0.97);
+      top: 56px; left: 0; right: 0; background: rgba(28,28,28,0.99);
       border-bottom: 1px solid var(--dark-border); padding: 20px 24px; gap: 16px;
     }
     .nav-toggle { display: block; }
@@ -311,6 +311,10 @@
     h2 { font-size: 1.4rem; }
     .footer-logos img { height: 28px; }
     .f-ms-td { right: -5%; }
+    /* Hide Red Zone label text on mobile — too close to Touchdown */
+    #m3 .f-ms-amt, #m3 .f-ms-lbl { display: none; }
+    .f-ms-td .f-ms-amt { font-size: 0.7rem; }
+    .f-ms-td .f-ms-lbl { font-size: 0.5rem; letter-spacing: 1px; }
   }
 </style>
 </head>
